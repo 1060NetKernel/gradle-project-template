@@ -1,0 +1,7 @@
+println "BUILDING ALL PROJECTS"
+
+allprojects
+{	//Apply anything we want to every project here
+}
+
+

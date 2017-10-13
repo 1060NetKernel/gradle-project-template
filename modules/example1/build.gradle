@@ -1,0 +1,39 @@
+//Use common build configuration for modules
+apply from: '../../gradle/common/common-module-build.gradle'
+
+//Boilerplate to find the NetKernel plugin
+buildscript {
+    apply from: '../../gradle/common/common-nk-boilerplate.gradle', to: buildscript
+}
+
+apply plugin: 'netkernel'
+
+apply plugin: 'idea'
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.11'
+    compileOnly group: 'urn.org.netkernel', name: 'mod.hds', version: '[1.1.1,)'
+}
+
+netkernel {
+    //Add the Maven Central repository for compile time dependency resolution
+    useMavenCentral()
+
+    //Add the NetKernel maven repository for compile time dependency resolution of core NetKernel libraries
+    useMavenNK()
+
+    //Add the core NetKernel libraries as compile time dependencies
+    useStandardCompileDependencies()
+
+    //Specify NetKernel instance for module deployment and management tasks etc
+    instances {
+
+        instances {
+            NK
+                    {
+                        edition = "EE"
+                        location = NKLOCATION	//Common property from gradle/common/common.properties.gradle
+                    }
+        }
+    }
+}

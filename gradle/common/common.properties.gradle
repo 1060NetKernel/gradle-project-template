@@ -1,0 +1,9 @@
+//Dynamic properties need to be poked into ext
+//See http://stackoverflow.com/questions/37101589/how-to-read-a-properties-files-and-use-the-values-in-project-gradle-script
+ext {
+
+	NKLOCATION = '../../../NKEE/'
+	MODULEMAVENGROUP = 'gradle.project.template'
+	UPLOADMAVENTARGET = 'file:../../../maven-module-dev/m2/repository/'
+
+}
